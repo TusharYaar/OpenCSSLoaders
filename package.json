@@ -1,0 +1,26 @@
+{
+  "name": "open-css-loader",
+  "version": "1.0.0",
+  "description": "Open CSS Loaders hosted on deta",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TusharYaar/OpenCSSLoaders.git"
+  },
+  "author": "Tushar S Agrawal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TusharYaar/OpenCSSLoaders/issues"
+  },
+  "homepage": "https://github.com/TusharYaar/OpenCSSLoaders#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "deta": "0.0.8",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "request": "^2.88.2"
+  }
+}
