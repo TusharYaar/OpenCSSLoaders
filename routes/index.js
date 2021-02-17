@@ -10,6 +10,7 @@ router.get("/getloaders", async (req, res) => {
     var loaders = await db.fetch();
     if(loaders)
     res.json(loaders);
+    else res.send("ERROR")
 })
 router.get("/serveranypopup", async (req, res) => {
     var message = await mdb.get("sez55rob6u7i");
