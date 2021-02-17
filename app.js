@@ -9,7 +9,7 @@ const express = require("express"),
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use("/api", myRoutes);
+app.use("/api", myRoutes);
 
 app.get("/", (req, res) => {
   res.sendFile("./public/index.html", { root: __dirname });
