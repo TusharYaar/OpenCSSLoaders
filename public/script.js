@@ -191,6 +191,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   $.getJSON(`${url}api/getloaders`).done(function (data) {
     loaderData = data.value;
+    // console.log(data.value)
     LoadLoaderData();
   });
   $("#go-to-top").click(function (e) {
