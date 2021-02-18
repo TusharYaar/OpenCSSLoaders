@@ -7,10 +7,10 @@ router = express.Router();
 
 
 router.get("/getloaders", async (req, res) => {
-    var loaders = await db.fetch();
+    var loaders = await db.fetch().next();
     if(loaders)
     res.json(loaders);
-    else res.send("ERROR")
+    else res.status(404).send("ERROR")
 })
 router.get("/serveranypopup", async (req, res) => {
     var message = await mdb.get("sez55rob6u7i");
@@ -28,7 +28,15 @@ router.post("/addthispopup", async (req, res) => {
       res.send("Worng Password");
     }
 });
-  
+router.post("/addthiscode", async (req, res) => {
+  var { loaderid,lname, html, css, contributor } = req.body;
+  var toCreate = {loaderid,lname, html, css, contributor };
+ toCreate.contributor = toCreate.contributor || "Anonymous"; 
+  toCreate.likes = 0;
+  toCreate.loaderid = parseInt(req.body.loaderid);
+  var insertedUser = await db.put(toCreate); // put() will autogenerate a key for us
+  res.status(201).json(insertedUser);
+});
 // router.post("/addthiscode", (req, res) => {
 //   var post = req.body;
 //   console.log(post);
@@ -54,13 +62,15 @@ router.post("/addthispopup", async (req, res) => {
 
 // router.post("/")
 
-// router.put("/like/:loader", (req, res) => {
-//   var val = req.body.like == "true" ? 1 : -1;
-//   connection.query("UPDATE loaders SET likes = likes + ? WHERE loaderid = ?", [val, req.params.loader], (err, result) => {
-//     if (err) res.send(err);
-//     else res.json({ val: val });
-//   });
-// });
+router.put("/like/:loader", (req, res) => {
+  var val = req.body.like == "true" ? 1 : -1;
+  const update = db.update({likes : db.util.increment(val)},req.params.loader);
+   res.json({val:val});
+  // connection.query("UPDATE loaders SET likes = likes + ? WHERE loaderid = ?", [val, req.params.loader], (err, result) => {
+  //   if (err) res.send(err);
+  //   else res.json({ val: val });
+  // });
+});
 
 // router.post("/imgoingtodeletethispost", (req, res) => {
 //   connection.query("Select * from others where mtype = 'PASSWORD'", (err, result) => {

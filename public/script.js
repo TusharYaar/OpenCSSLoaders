@@ -22,6 +22,7 @@ window.addEventListener("DOMContentLoaded", () => {
       loaderboxParent.append(loaderbox);
       loaderboxParent.data("index", index);
       loaderboxParent.data("id", loader.loaderid);
+      loaderboxParent.data("key",loader.key);
       loaderboxParent.append(`<h4>${loader.lname}</h4> <h5>${loader.contributor}</h5> <div class="likes"><img src=${dislike}><h6>${loader.likes}</h6></div>`);
 
       $(".container").append(loaderboxParent);
@@ -42,11 +43,12 @@ window.addEventListener("DOMContentLoaded", () => {
   });
   $(".container").on("click", "div.likes", function (e) {
     e.stopPropagation();
-    var id = $(this).parent().data().id;
+    var key = $(this).parent().data().key;
     var data = dislike === $(this).children("img").attr("src");
+    console.log(key);
     $.ajax({
       method: "PUT",
-      url: `${url}api/like/${id}`,
+      url: `${url}api/like/${key}`,
       data: `like=${data}`,
     }).done((data) => {
       if (data.val == 1) $(this).children("img").removeClass("dark");
@@ -188,7 +190,7 @@ window.addEventListener("DOMContentLoaded", () => {
   $("#code-snippet").removeClass("active");
 
   $.getJSON(`${url}api/getloaders`).done(function (data) {
-    loaderData = data;
+    loaderData = data.value;
     LoadLoaderData();
   });
   $("#go-to-top").click(function (e) {

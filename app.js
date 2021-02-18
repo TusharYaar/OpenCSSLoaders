@@ -35,3 +35,4 @@ app.post("*", (req, res) => {
 app.listen(PORT, () => {
   console.log(`listening to port ${PORT}`);
 });
+module.exports = app;
