@@ -14,7 +14,7 @@ The aim of the project is to provide a number of css loaders for your web page, 
 First make sure you have node.js and Node Package Manager (npm) installed.
 
 1. Clone the Repository by `git clone URL`
-1. Run `npm install` to donwload all the required packages.
+1. Run `npm install` to donwload all the required packages
 1. Create a .env file and add the Following values in it
 ```
 PRIMARY_KEY // primart key for the deta
