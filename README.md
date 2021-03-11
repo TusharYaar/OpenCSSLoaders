@@ -1,5 +1,5 @@
 # Open CSS Loader
-Check the app here: [https://chzaqr.deta.dev](https://chzaqr.deta.dev)
+Check the app here: [https://opencssloader.netlify.app/](https://opencssloader.netlify.app/)
 This is the application deployed on Deta.sh. The Structure of the application is:
 
     Node.js : Backend API
@@ -23,6 +23,15 @@ SECRET_KEY //Your Secret Password which allows you to set popups
 ```
 
 Goto `public\data.js` and set the `url = http://localhost:3000/` 
+in the `index.js` and `/routes/index.js` files, set the `origin`under `corsOption` as `"*"` 
+i.e. 
+```javascript
+corsOption {
+    var corsOptions = {
+  origin: 'https://opencssloader.netlify.app',   // Change this to * or to your site
+  optionsSuccessStatus: 200
+}
+```
 
 1. Run `node app.js` or `nodemon app.js` if you have nodemon installed.
 2. Goto [localhost:3000](http://localhost:3000) to see the app working.

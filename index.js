@@ -9,7 +9,7 @@ const express = require("express"),
 
   var corsOptions = {
     origin: 'https://opencssloader.netlify.app',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    optionsSuccessStatus: 200 
   }
 
 app.use(express.static(__dirname + "/public"));
