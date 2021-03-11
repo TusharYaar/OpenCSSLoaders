@@ -4,6 +4,13 @@ const deta = Deta(process.env.PRIMARY_KEY);// configure your Deta project
 const mdb = deta.Base("Message-DB");
 const db = deta.Base("Open-CSS-Loaders-DB")
 router = express.Router();
+const cors = require("cors");
+
+var corsOptions = {
+  origin: 'https://opencssloader.netlify.app',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+router.all("*",cors(corsOptions));
 
 
 router.get("/getloaders", async (req, res) => {

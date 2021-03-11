@@ -4,12 +4,19 @@ const express = require("express"),
   app = express(),
   bodyParser = require("body-parser"),
   myRoutes = require("./routes"),
+  cors = require("cors");
   PORT = process.env.PORT || 3000;
+
+  var corsOptions = {
+    origin: 'https://opencssloader.netlify.app',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
 
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api", myRoutes);
+app.use(cors(corsOptions));
 
 app.get("/", (req, res) => {
   res.sendFile("./public/index.html", { root: __dirname });
