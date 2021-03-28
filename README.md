@@ -1,6 +1,5 @@
 # Open CSS Loader
-Check the app here: [https://opencssloader.netlify.app/](https://opencssloader.netlify.app/)
-This is the application deployed on Deta.sh. The Structure of the application is:
+Check the app here: [https://opencssloader.netlify.app/](https://opencssloader.netlify.app/). The Structure of the application is:
 
     Node.js : Backend API
     Detabase : Database
