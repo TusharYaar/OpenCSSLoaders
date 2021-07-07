@@ -7,7 +7,7 @@ const express = require("express"),
   cors = require("cors");
   PORT = process.env.PORT || 3000;
 
-  const whiteList = ['https://opencssloader.netlify.app',"https://opencssloader.tusharyaar.me/"];
+  const whiteList = ['https://opencssloader.netlify.app',"https://opencssloader.tusharyaar.me"];
   var corsOptions = {
     origin: function (origin, callback) {
       if (whiteList.indexOf(origin) !== -1) {
@@ -19,11 +19,11 @@ const express = require("express"),
     optionsSuccessStatus: 200 
   }
 
+  app.use(cors(corsOptions));
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api", myRoutes);
-app.use(cors(corsOptions));
 
 app.get("/", (req, res) => {
   res.sendFile("./public/index.html", { root: __dirname });
