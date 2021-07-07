@@ -8,7 +8,7 @@ const express = require("express"),
   PORT = process.env.PORT || 3000;
 
   var corsOptions = {
-    origin: 'https://opencssloader.netlify.app',
+    origin: ['https://opencssloader.netlify.app',"https://opencssloader.tusharyaar.me/"],
     optionsSuccessStatus: 200 
   }
 
