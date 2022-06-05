@@ -5,21 +5,21 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   myRoutes = require("./routes"),
   cors = require("cors");
-  PORT = process.env.PORT || 3000;
+PORT = process.env.PORT || 3000;
 
-  const whiteList = ['https://opencssloader.netlify.app',"https://opencssloader.tusharyaar.me"];
-  var corsOptions = {
-    origin: function (origin, callback) {
-      if (whiteList.indexOf(origin) !== -1) {
-        callback(null, true)
-      } else {
-        callback(new Error('Not allowed by CORS'))
-      }
-    },
-    optionsSuccessStatus: 200 
-  }
+const whiteList = ["https://opencssloader.netlify.app", "https://opencssloader.tusharyaar.com"];
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whiteList.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  optionsSuccessStatus: 200,
+};
 
-  app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
