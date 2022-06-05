@@ -22,8 +22,10 @@ window.addEventListener("DOMContentLoaded", () => {
       loaderboxParent.append(loaderbox);
       loaderboxParent.data("index", index);
       loaderboxParent.data("id", loader.loaderid);
-      loaderboxParent.data("key",loader.key);
-      loaderboxParent.append(`<h4>${loader.lname}</h4> <h5>${loader.contributor}</h5> <div class="likes"><img src=${dislike}><h6>${loader.likes}</h6></div>`);
+      loaderboxParent.data("key", loader.key);
+      loaderboxParent.append(
+        `<h4>${loader.lname}</h4> <h5>${loader.contributor}</h5> <div class="likes"><img src=${dislike}><h6>${loader.likes}</h6></div>`
+      );
 
       $(".container").append(loaderboxParent);
       $("style#loaderStyle").append(loader.css);
@@ -48,7 +50,7 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log(key);
     $.ajax({
       method: "PUT",
-      url: `${url}api/like/${key}`,
+      url: `${url}/api/like/${key}`,
       data: `like=${data}`,
     }).done((data) => {
       if (data.val == 1) $(this).children("img").removeClass("dark");
@@ -139,7 +141,7 @@ window.addEventListener("DOMContentLoaded", () => {
       alert("Less Number of Characters Provided");
     } else if (ifIDPresent(obj) && checkKeyframes(obj.css)) {
       $(this).attr("disabled", true);
-      $.post(`${url}api/addthiscode`, obj)
+      $.post(`${url}/api/addthiscode`, obj)
         .done((data) => {
           obj.likes = 0;
           loaderData.push(obj);
@@ -180,7 +182,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Quote Generation And Clicking Response
   function generateQuote() {
-    $.get(`${url}getquote`).done(function (data) {
+    $.get(`${url}/getquote`).done(function (data) {
       $("#quote").text(data);
     });
   }
@@ -189,7 +191,7 @@ window.addEventListener("DOMContentLoaded", () => {
   $("#add-code-snippet").removeClass("active");
   $("#code-snippet").removeClass("active");
 
-  $.getJSON(`${url}api/getloaders`).done(function (data) {
+  $.getJSON(`${url}/api/getloaders`).done(function (data) {
     loaderData = data.value;
     // console.log(data.value)
     LoadLoaderData();

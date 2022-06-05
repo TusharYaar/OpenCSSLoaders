@@ -144,7 +144,7 @@ ace.config.set('themePath', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/'
  </script>
 <script src="./data.js"></script>
 <script src="./script.js"></script>
-<script>  $.get(`${url}api/serveranypopup`).done(function (data) {
+<script>  $.get(`${url}/api/serveranypopup`).done(function (data) {
     if (data!= "NO") {
     $("html").scrollTop(0);
       UpdatePopup(data);

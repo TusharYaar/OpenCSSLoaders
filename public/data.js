@@ -1,6 +1,6 @@
 // File For defining various variables
 // const url = "http://localhost:3000/";
-const url = "opencssloaderapi.tusharyaar.com/";
+const url = "https://opencssloaderapi.tusharyaar.com";
 const darkElement = [
   "header",
   "#page-theme-toggle > img",
